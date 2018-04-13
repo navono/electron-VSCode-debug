@@ -10,14 +10,19 @@
         "name": "Electron: Main",
         "protocol": "inspector",
         "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
-        "runtimeArgs": [
-            "--remote-debugging-port=9223",
-            ".\\app\\main\\main.js"
-        ],
         "windows": {
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
         },
+        "runtimeArgs": [
+            "--remote-debugging-port=9223",
+            ".\\app\\main\\index.js"
+        ],
+        "env": {
+            "NODE_ENV": "development",
+            "PORT": "3000",
+        },
         "sourceMaps": true,
+        "smartStep": true,
         "internalConsoleOptions": "openOnSessionStart",
         "console": "integratedTerminal",
     },
@@ -27,7 +32,12 @@
         "request": "attach",
         "port": 9223,
         "webRoot": "${workspaceFolder}",
-        "timeout": 5000
+        "timeout": 15000,
+        "sourceMaps": true,
+        "sourceMapPathOverrides": {
+        "webpack:///*": "${workspaceFolder}/*",
+        "webpack:///./renderer/*": "${workspaceFolder}/*",
+      }
     }
   ],
   "compounds": [

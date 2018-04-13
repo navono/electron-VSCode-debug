@@ -16,9 +16,12 @@ const server = new webpackDevServer(compiler, devConfig.devServer)
 
   console.log(`webpack-dev-server listening at http://localhost:${PORT}`);
 
-  spawn('yarn', ['electron', `PORT=${PORT}`], { shell: true, env: process.env, stdio: 'inherit' })
+  // 区别直接从 `webpack-de-server` 启动，还是从VS Code 调试启动
+  if (!argv['debug']) {
+    spawn('yarn', ['electron', `PORT=${PORT}`, `--remote-debugging-port=9223`], { shell: true, env: process.env, stdio: 'inherit' })
     .on('close', code => process.exit(code))
     .on('error', spawnError => console.error(spawnError));
+  }
 });
 
 process.on('SIGTERM', () => {

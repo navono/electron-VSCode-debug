@@ -4,7 +4,8 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "dev": "cross-env PORT=3000 node server.js",
+    "dev": "cross-env PORT=3000 NODE_ENV=development node server.js",
+    "vs-debug": "yarn dev --debug",
     "electron": "cross-env NODE_ENV=development electron ./app/main/index.js",
     "build": "yarn clean && yarn build:main && yarn build:renderer",
     "build:main": "webpack --config ./webpack.config.main.js --progress --profile --colors",

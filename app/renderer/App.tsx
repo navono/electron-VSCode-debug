@@ -1,5 +1,8 @@
 import * as React from "react";
+import Counter from "./Counter";
 
 export default (App: any) => (
-  <p>App Component.</p>
+  <div>
+    < Counter />
+  </div>
 );
