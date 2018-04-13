@@ -32,6 +32,7 @@ const devConfig = merge(baseConfig, {
 
   output: {
     path: path.join(__dirname, './dist'),
+    publicPath: `http://localhost:${PORT}/`,
     filename: 'renderer.js',
     libraryTarget: 'commonjs2'
   },
