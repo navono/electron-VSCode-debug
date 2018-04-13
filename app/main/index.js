@@ -36,9 +36,9 @@ function createWindow () {
 
   // and load the index.html of the app.
   const html = dev ? 
-   `http:\\localhost:${PORT}`
+   `http:\\\localhost:${PORT}`
    : url.format({
-    pathname: path.join(__dirname, "./index.html"),
+    pathname: path.join("./dist/", "./index.html"),
     protocol: "file:",
     slashes: true,
   });

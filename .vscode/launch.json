@@ -13,14 +13,17 @@
         "windows": {
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
         },
+        "program": "${workspaceRoot}/app/main/index.js",
         "runtimeArgs": [
+            "--enable-logging",
             "--remote-debugging-port=9223",
-            ".\\app\\main\\index.js"
         ],
         "env": {
-            "NODE_ENV": "development",
-            "PORT": "3000",
+            "NODE_ENV": "production"
         },
+        "outFiles": [
+          "${workspaceFolder}/dist/**/*.js"
+        ],
         "sourceMaps": true,
         "smartStep": true,
         "internalConsoleOptions": "openOnSessionStart",
@@ -31,13 +34,9 @@
         "type": "chrome",
         "request": "attach",
         "port": 9223,
-        "webRoot": "${workspaceFolder}",
+        "webRoot": "${workspaceFolder}/dist",
         "timeout": 15000,
         "sourceMaps": true,
-        "sourceMapPathOverrides": {
-        "webpack:///*": "${workspaceFolder}/*",
-        "webpack:///./renderer/*": "${workspaceFolder}/*",
-      }
     }
   ],
   "compounds": [
