@@ -18,7 +18,7 @@ const server = new webpackDevServer(compiler, devConfig.devServer)
 
   // 区别直接从 `webpack-de-server` 启动，还是从VS Code 调试启动
   if (!argv['debug']) {
-    spawn('yarn', ['electron', `PORT=${PORT}`, `--remote-debugging-port=9223`], { shell: true, env: process.env, stdio: 'inherit' })
+    spawn('yarn', ['electron', `PORT=${PORT}`, `--enable-logging`, `--remote-debugging-port=9223`], { shell: true, env: process.env, stdio: 'inherit' })
     .on('close', code => process.exit(code))
     .on('error', spawnError => console.error(spawnError));
   }

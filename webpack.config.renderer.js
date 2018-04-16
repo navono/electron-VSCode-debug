@@ -9,10 +9,10 @@ const devConfig = merge(baseConfig, {
 
   mode: 'development',
 
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
+    // contentBase: path.resolve(__dirname, "./dist"),
     hot: true,
     port: PORT,
     historyApiFallback: true,
@@ -48,6 +48,10 @@ const devConfig = merge(baseConfig, {
     new webpack.LoaderOptionsPlugin({
       debug: true
     }),
+
+    // new webpack.SourceMapDevToolPlugin({
+    //   filename: '[name].js.map',
+    // }),
   ]
 });
 

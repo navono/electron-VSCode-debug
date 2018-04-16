@@ -21,6 +21,8 @@ export default class Hello extends React.Component<any, any> {
   }
 
   private onIncrement = () => {
+    console.log('Increment');
+    
     this.setState((prevState: any, props: any) => {
       return { counter: prevState.counter + 1 };
     });

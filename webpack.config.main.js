@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 
@@ -7,7 +8,7 @@ module.exports = merge(baseConfig, {
 
   mode: 'development',
 
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   entry: ['./main/index'],
 
@@ -16,6 +17,10 @@ module.exports = merge(baseConfig, {
     filename: 'main.js',
     libraryTarget: 'commonjs2'
   },
+
+  plugins: [
+    // new webpack.SourceMapDevToolPlugin(),
+  ],
 
   /**
    * Disables webpack processing of __dirname and __filename.

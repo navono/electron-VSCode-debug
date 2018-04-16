@@ -8,6 +8,11 @@ const baseConfig = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
+      },
+      {
         test: /\.tsx?$/,
         include: /app/,
         exclude: /node_modules/,

@@ -14,7 +14,7 @@ module.exports = merge(baseConfig, {
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'main.js',
-    libraryTarget: 'commonjs2'
+    // libraryTarget: 'commonjs2'
   },
 
   /**
