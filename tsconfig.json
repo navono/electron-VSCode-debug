@@ -4,6 +4,24 @@
     "module": "commonjs",
     "jsx": "react",
     "sourceMap": true,
-    "sourceRoot": "./app"
+    "sourceRoot": "./app",
+    "baseUrl": ".",
+    "lib": [
+      "dom",
+      "es6",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "types": [],
+
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
   },
 }

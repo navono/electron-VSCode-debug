@@ -1,4 +1,14 @@
+<!-- TOC -->
+
+- [electron-VSCode-debug](#electron-vscode-debug)
+  - [To Use](#to-use)
+  - [Resources for Learning Electron](#resources-for-learning-electron)
+  - [License](#license)
+
+<!-- /TOC -->
 # electron-VSCode-debug
+
+需要区分`development`和`production`环境。目前`webpack`配置不完善。
 
 **Clone and run for a quick way to see Electron in action.**
 

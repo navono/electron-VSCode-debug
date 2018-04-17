@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const baseConfig = {
   // absolute path for project root
@@ -39,13 +38,6 @@ const baseConfig = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: '../dist/index.html',
-      template: './renderer/index.html',
-    })
-  ],
 };
 
 module.exports = baseConfig;

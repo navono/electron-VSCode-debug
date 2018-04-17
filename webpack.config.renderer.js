@@ -1,18 +1,29 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
 
 const PORT = process.env.PORT || 3000;
+const dev = process.env.NODE_ENV === 'development';
+
+let entry = [];
+if (dev) {
+  entry.push('react-hot-loader/patch');
+  entry.push(`webpack-dev-server/client?http://localhost:${PORT}/`);
+  entry.push('webpack/hot/only-dev-server');
+}
+entry.push('./renderer/index');
+
 const devConfig = merge(baseConfig, {
   target: 'electron-renderer',
 
-  mode: 'development',
+  mode: dev ? 'development' : 'production',
 
-  devtool: 'cheap-module-eval-source-map',
+  devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
   devServer: {
-    // contentBase: path.resolve(__dirname, "./dist"),
+    contentBase: path.resolve(__dirname, "./dist"),
     hot: true,
     port: PORT,
     historyApiFallback: true,
@@ -21,18 +32,11 @@ const devConfig = merge(baseConfig, {
     }
   },
 
-  entry: [
-    'react-hot-loader/patch',
-    `webpack-dev-server/client?http://localhost:${PORT}/`,
-    // dev-server: 遇到错误会重新刷新浏览器
-    // only-dev-server: 遇到错误不会重新刷新浏览器，React App推荐使用。因为不会重置状态
-    'webpack/hot/only-dev-server',
-    './renderer/index',
-  ],
+  entry,
 
   output: {
     path: path.join(__dirname, './dist'),
-    publicPath: `http://localhost:${PORT}/`,
+    publicPath: dev ? `http://localhost:${PORT}/` : '',
     filename: 'renderer.js',
     libraryTarget: 'commonjs2'
   },
@@ -46,12 +50,13 @@ const devConfig = merge(baseConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
 
     new webpack.LoaderOptionsPlugin({
-      debug: true
+      debug: dev ? true : false
     }),
 
-    // new webpack.SourceMapDevToolPlugin({
-    //   filename: '[name].js.map',
-    // }),
+    new HtmlWebpackPlugin({
+      filename: '../dist/index.html',
+      template: './renderer/index.html',
+    })
   ]
 });
 

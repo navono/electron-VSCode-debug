@@ -18,6 +18,9 @@
             "--enable-logging",
             "--remote-debugging-port=9223",
         ],
+        "outFiles": [
+            "${workspaceFolder}/dist/**/*.js"
+        ],
         "internalConsoleOptions": "openOnSessionStart",
         "console": "integratedTerminal",
         "sourceMapPathOverrides": {
@@ -36,7 +39,7 @@
         "port": 9223,
         "timeout": 15000,
         "sourceMaps": true,
-        // "trace": true,
+        "trace": true,
         "sourceMapPathOverrides": {
             // "webpack:///./*":   "${workspaceFolder}/*",
             // "webpack:///renderer/*": "${workspaceRoot}/app/**/*.tsx",

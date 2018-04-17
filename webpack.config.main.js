@@ -3,12 +3,14 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 
+const dev = process.env.NODE_ENV === 'development';
+
 module.exports = merge(baseConfig, {
   target: 'electron-main',
 
-  mode: 'development',
+  mode: dev ? 'development' : 'production',
 
-  devtool: 'cheap-module-eval-source-map',
+  devtool: dev ? 'cheap-module-eval-source-map' : 'source-map',
 
   entry: ['./main/index'],
 
@@ -17,10 +19,6 @@ module.exports = merge(baseConfig, {
     filename: 'main.js',
     libraryTarget: 'commonjs2'
   },
-
-  plugins: [
-    // new webpack.SourceMapDevToolPlugin(),
-  ],
 
   /**
    * Disables webpack processing of __dirname and __filename.
